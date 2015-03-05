@@ -5,7 +5,7 @@
 // @noframes
 // @include     http://www.widdop.co.uk/product/*
 // @grant		none
-// @version     2.1
+// @version     7.0.0
 // ==/UserScript==
 
 (function($) {
