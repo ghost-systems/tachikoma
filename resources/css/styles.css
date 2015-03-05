@@ -2,29 +2,29 @@
 /* Universal Mixins */
 @font-face {
   font-family: 'Nobel Light';
-  src: url('../../resources/fonts/Nobel Light.eot');
-  src: url('../../resources/fonts/Nobel Light.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Light.woff') format('woff'), url('../../resources/fonts/Nobel Light.ttf') format('truetype');
+  src: url('../../../resources/fonts/Nobel Light.eot');
+  src: url('../../../resources/fonts/Nobel Light.eot?') format('embedded-opentype'), url('../../../resources/fonts/Nobel Light.woff') format('woff'), url('../../../resources/fonts/Nobel Light.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: 'Nobel Book';
-  src: url('../../resources/fonts/Nobel Book.eot');
-  src: url('../../.resources/fonts/Nobel Book.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Book.woff') format('woff'), url('../../resources/fonts/Nobel Book.ttf') format('truetype');
+  src: url('../../../resources/fonts/Nobel Book.eot');
+  src: url('../../../resources/fonts/Nobel Book.eot?') format('embedded-opentype'), url('../../../resources/fonts/Nobel Book.woff') format('woff'), url('../../../resources/fonts/Nobel Book.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: 'Nobel Regular';
-  src: url('../../resources/fonts/Nobel Regular.eot');
-  src: url('../../resources/fonts/Nobel Regular.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Regular.woff') format('woff'), url('../../resources/fonts/Nobel Regular.ttf') format('truetype');
+  src: url('../../../resources/fonts/Nobel Regular.eot');
+  src: url('../../../resources/fonts/Nobel Regular.eot?') format('embedded-opentype'), url('../../../resources/fonts/Nobel Regular.woff') format('woff'), url('../../../resources/fonts/Nobel Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: 'Nobel Bold';
-  src: url('../../resources/fonts/Nobel Bold.eot');
-  src: url('../../resources/fonts/Nobel Bold.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Bold.woff') format('woff'), url('../../resources/fonts/Nobel Bold.ttf') format('truetype');
+  src: url('../../../resources/fonts/Nobel Bold.eot');
+  src: url('../../../resources/fonts/Nobel Bold.eot?') format('embedded-opentype'), url('../../../resources/fonts/Nobel Bold.woff') format('woff'), url('../../../resources/fonts/Nobel Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: bold;
 }

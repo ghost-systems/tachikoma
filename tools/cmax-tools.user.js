@@ -5,7 +5,7 @@
 // @include     https://unified.channelmax.net/*
 // @include     https://inventory.channelmax.net/*
 // @grant		none
-// @version     1.0
+// @version     7.0.0
 // ==/UserScript==
 
 (function($) {

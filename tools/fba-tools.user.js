@@ -5,7 +5,7 @@
 // @noframes
 // @include     https://sellercentral.amazon.co.uk/gp/ssof/knights/*
 // @grant		none
-// @version     5.5
+// @version     7.0.0
 // ==/UserScript==
 
 (function($) {

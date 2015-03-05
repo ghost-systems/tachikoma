@@ -7,7 +7,7 @@
 // @include		http://www.amazon.co.uk/gp/product/*
 // @include		https://catalog.amazon.com/abis/*
 // @grant		none
-// @version     1.0
+// @version     7.0.0
 // ==/UserScript==
 
 (function($) {
