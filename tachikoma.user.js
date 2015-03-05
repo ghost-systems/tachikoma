@@ -6,13 +6,13 @@
 // @include     *
 // @grant		none
 // @require		http://code.jquery.com/jquery-latest.js
-// @version     6.12
+// @version     6.5
 // ==/UserScript==
 
 window.gQuery = $.noConflict(true);
 (function($) {
 		
-	console.log('Tachikoma v6.12 running on : ' + $().jquery);
+	console.log('Tachikoma v6.5 running on : ' + $().jquery);
 	
 	Utils = new function() 
 	{
