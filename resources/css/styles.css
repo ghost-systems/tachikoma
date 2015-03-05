@@ -1,0 +1,190 @@
+/* fonts */
+/* Universal Mixins */
+@font-face {
+  font-family: 'Nobel Light';
+  src: url('../resources/fonts/Nobel Light.eot');
+  src: url('../resources/fonts/Nobel Light.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Light.woff') format('woff'), url('../../resources/fonts/Nobel Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Nobel Book';
+  src: url('../resources/fonts/Nobel Book.eot');
+  src: url('../.resources/fonts/Nobel Book.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Book.woff') format('woff'), url('../../resources/fonts/Nobel Book.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Nobel Regular';
+  src: url('../resources/fonts/Nobel Regular.eot');
+  src: url('../resources/fonts/Nobel Regular.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Regular.woff') format('woff'), url('../../resources/fonts/Nobel Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Nobel Bold';
+  src: url('../resources/fonts/Nobel Bold.eot');
+  src: url('../resources/fonts/Nobel Bold.eot?') format('embedded-opentype'), url('../../resources/fonts/Nobel Bold.woff') format('woff'), url('../../resources/fonts/Nobel Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+.nobelregular {
+  font-family: 'Nobel Regular';
+  font-style: normal;
+  font-weight: normal;
+}
+.nobelbold {
+  font-family: 'Nobel Bold';
+  font-style: normal;
+  font-weight: bold;
+}
+.nobelbook {
+  font-family: 'Nobel Book';
+  font-style: normal;
+  font-weight: normal;
+}
+.nobellight {
+  font-family: 'Nobel Light';
+  font-style: normal;
+  font-weight: normal;
+}
+#gs-switch {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 19500;
+  cursor: pointer;
+  width: 36px;
+  padding: 6px;
+  transform: rotate(0deg);
+  transition: transform 0.18s ease;
+}
+.gs-switchBox {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #000;
+  border: 1px solid #fff;
+  margin: 3px;
+  float: left;
+  display: inline;
+  height: 6px;
+  width: 6px;
+}
+.gs-switchBoxAlt {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #000;
+  border: 1px solid #fff;
+  margin: 3px;
+  float: left;
+  display: inline;
+  height: 4px;
+  width: 18px;
+}
+.gs-switchBoxAlt:nth-child(2) {
+  height: 4px;
+  margin: 0px 3px;
+}
+#gs-menu {
+  background: #000;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  z-index: 19400;
+  width: 250px;
+  transition: all 0.18s ease;
+  padding: 0 0 9px 0;
+}
+#gs-menu h1 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  height: 36px;
+  color: #fff;
+  line-height: 36px;
+  border-bottom: #fff 1px solid;
+  font-family: 'Nobel Bold';
+  font-style: normal;
+  font-weight: bold;
+  padding: 0 36px 0 0;
+  margin: 0 9px;
+  font-size: 22px;
+}
+#gs-menu a:link, #gs-menu a:visited, #gs-menu a:hover, #gs-menu a:active {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  height: 18px;
+  opacity: 1;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Nobel Regular';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 24px;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  padding: 0px 36px 0px px;
+  margin: 0px 9px;
+  text-align: left;
+}
+#gs-menu a:hover {
+  color: #000;
+  background-color: #fff;
+}
+#gs-overlay.show {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 19000;
+  padding: 200px 0px;
+  text-align: center;
+  font-family: 'Nobel Book';
+  font-size: 72px;
+}
+#gs-overlay.show div {
+  top: 198px;
+  position: absolute;
+  height: 180px;
+  line-height: 180px;
+  width: 100%;
+  text-align: center;
+}
+#gs-overlay.show #percentbar {
+  background-color: #000;
+  opacity: 1;
+  transition: all 2s ease-in;
+  width: 0%;
+}
+.gs-animated #gs-switch {
+  transform: rotate(90deg);
+}
+.gs-animated #gs-menu {
+  right: 0px;
+}
+.highlight-gs {
+  opacity: 1;
+  background-color: #000;
+  color: #fff;
+}
+.highlight-gs a:link, .highlight-gs a:active, .highlight-gs a:visited, .highlight-gs a:hover {
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+}
+pre {
+  margin: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+}
