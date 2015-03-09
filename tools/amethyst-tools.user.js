@@ -5,7 +5,7 @@
 // @noframes
 // @include     http://www.amethystdublin.com/*
 // @grant		none
-// @version     7.0.0
+// @version     7.0.5
 // ==/UserScript==
 
 (function($) {
@@ -38,9 +38,11 @@
 		{
 			self.finished = (localStorage.getItem('finished') !== null) ? self.parseBoolean(localStorage.getItem('finished')) : false;
 			self.productLinks = (localStorage.getItem('productLinks') !== null) ? localStorage.getItem('productLinks') : '';
+			self.categories = (localStorage.getItem('categories') !== null) ? localStorage.getItem('categories') : '';
 			console.log('Data Loaded:');
 			console.log('--------------------------');
 			console.log(self.finished);
+			console.log(self.categories);
 			console.log(self.productLinks);
 			console.log('--------------------------');
 		}
@@ -128,6 +130,16 @@
 			localStorage.setItem('allProductData', localStorage.getItem('allProductData') + allProductData);
 		}
 		
+		this.getCategories = function()
+		{
+			self.categories = '';
+			$('.side-nav-sub a').each(function(i){
+				self.categories += $(this).attr('href') + "\n";
+			});
+			localStorage.setItem('categories',self.categories);
+			console.log(self.categories);
+		}
+		
 		this.getData = function() 
 		{
 			self.totalSkus = self.getTotalSkus();
@@ -161,6 +173,7 @@
 			['Extract Product Data (All)', self.getData],
 			['Show Data', self.showSavedInfo],
 			['Reset', self.resetLocalStorage],
+			['Get Categories', self.getCategories],
 		];
 	}
 	
