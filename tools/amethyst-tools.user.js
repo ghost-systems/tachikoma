@@ -5,7 +5,7 @@
 // @noframes
 // @include     http://www.amethystdublin.com/*
 // @grant		none
-// @version     7.0.5
+// @version     7.0.6
 // ==/UserScript==
 
 (function($) {
