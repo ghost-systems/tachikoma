@@ -5,7 +5,7 @@
 // @noframes
 // @include     https://sellercentral.amazon.co.uk/gp/ssof/knights/*
 // @grant		none
-// @version     7.0.0
+// @version     7.0.6
 // ==/UserScript==
 
 (function($) {
@@ -96,18 +96,34 @@
 				.each(
 					function(index, domElement) 
 					{
+						var errorText = '';
+						// Get NLA Info
+						var parentRow = $(this).parent();
+						var errorRow = $('.wrap-long-text .itemError', parentRow);
+						if ( errorRow.length ) {
+							// ItemError Exists
+							errorRow.parent().css('background-color', '#FF0000');
+							errorText = errorRow
+								.contents()
+								.filter(function() {
+									return this.nodeType === 3;
+								})
+								.text();
+						}
+						// Get Product Info
 						var fbaJson = $('input.response', domElement).val();
 						if (typeof fbaJson != 'undefined') {
 							var fbaInfo = self.parseFbaJson(fbaJson);
-							self.saveFbaProduct(fbaInfo.sku, [fbaInfo.commission, fbaInfo.pickpack, fbaInfo.weightFee]);
+							self.saveFbaProduct(fbaInfo.sku, [fbaInfo.commission, fbaInfo.pickpack, fbaInfo.weightFee, errorText]);
 							$('a.cost', domElement)
 								.text('[' + count + '] £ ' + fbaInfo.commission + ' + ' + fbaInfo.pickpack + ' + ' + fbaInfo.weightFee);
 						} else {
 							var sku = $(domElement).attr('data-msku');
-							self.saveFbaProduct(sku, []);
+							self.saveFbaProduct(sku, ['', '', '', errorText]);
 							$(domElement)
 								.text('[' + count + '] --- ');
 						}
+						
 						count++;
 					}
 				);
@@ -148,7 +164,7 @@
 		{
 			var count = 1, 
 				sku,
-				text = "#\tSKU\tComission\tPick/Pack\tWeight Fee\n";
+				text = "#\tSKU\tComission\tPick/Pack\tWeight Fee\tErrorText\n";
 	
 			for (sku in self.masterFbaInfo) 
 			{
@@ -157,7 +173,8 @@
 							decodeURIComponent(sku) + "\t" +
 							self.masterFbaInfo[sku][0] + "\t" +
 							self.masterFbaInfo[sku][1] + "\t" +
-							self.masterFbaInfo[sku][2] + "\n";
+							self.masterFbaInfo[sku][2] + "\t" +
+							self.masterFbaInfo[sku][3] + "\n";
 					count++;
 				}
 			}
