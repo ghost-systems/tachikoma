@@ -5,7 +5,7 @@
 // @noframes
 // @include     https://sellercentral.amazon.co.uk/gp/ssof/knights/*
 // @grant		none
-// @version     7.0.6
+// @version     7.0.8
 // ==/UserScript==
 
 (function($) {
@@ -14,6 +14,8 @@
 	{
 		var self = this;
 		this.masterFbaInfo = [];
+		this.showErrors = false;
+
 
 		this.tidyPage = function()
 		{
@@ -44,6 +46,12 @@
 			} else {
 				window.setTimeout(self.saveAllData, 2000);
 			}			
+		}
+		
+		this.saveAllDataWithErrors = function()
+		{
+			self.showErrors = true;
+			self.saveAllData();	
 		}
 		
 		this.getCurrentPage = function()
@@ -119,7 +127,8 @@
 								.text('[' + count + '] £ ' + fbaInfo.commission + ' + ' + fbaInfo.pickpack + ' + ' + fbaInfo.weightFee);
 						} else {
 							var sku = $(domElement).attr('data-msku');
-							self.saveFbaProduct(sku, ['', '', '', errorText]);
+							var undef;
+							self.saveFbaProduct(sku, [undef, undef, undef, errorText]);
 							$(domElement)
 								.text('[' + count + '] --- ');
 						}
@@ -164,17 +173,26 @@
 		{
 			var count = 1, 
 				sku,
-				text = "#\tSKU\tComission\tPick/Pack\tWeight Fee\tErrorText\n";
+				text = "#\tSKU\tComission\tPick/Pack\tWeight Fee\n";
+				
+				if (self.showErrors) {
+					text = "#\tSKU\tErrorText\n";
+				}
 	
 			for (sku in self.masterFbaInfo) 
 			{
 				if (sku != 'inArray') { // Chrome enumerates property inArray, unneeded in this list.
-					text += count + "\t" +
-							decodeURIComponent(sku) + "\t" +
-							self.masterFbaInfo[sku][0] + "\t" +
+					
+					text += count + "\t" + decodeURIComponent(sku);
+					
+					if (self.showErrors) {
+						text +=	"\t" + self.masterFbaInfo[sku][3];
+					} else {
+						text +=	"\t" + self.masterFbaInfo[sku][0] + "\t" +
 							self.masterFbaInfo[sku][1] + "\t" +
-							self.masterFbaInfo[sku][2] + "\t" +
-							self.masterFbaInfo[sku][3] + "\n";
+							self.masterFbaInfo[sku][2];
+					}
+					text += "\n"
 					count++;
 				}
 			}
@@ -193,7 +211,8 @@
 		this.tools = 
 		[
 			['Compact Page', self.tidyPage],
-			['Extract FBA Product Data', self.saveAllData]
+			['Extract FBA Product Data', self.saveAllData],
+			['Extract FBA Product Errors', self.saveAllDataWithErrors],
 		];
 	}
 	
