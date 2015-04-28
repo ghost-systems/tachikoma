@@ -5,7 +5,7 @@
 // @noframes
 // @include     https://sellercentral.amazon.co.uk/gp/ssof/knights/*
 // @grant		none
-// @version     7.0.16
+// @version     7.0.18
 // ==/UserScript==
 
 (function($) {
@@ -21,18 +21,22 @@
 		{
 			var toRemove = [];
 			
+			// Add elements by ID
 			toRemove.push(document.getElementById('rightWidget'));
 			toRemove.push(document.getElementById('fba-capacity-widget'));
 			toRemove.push(document.getElementById('fba-search-capabilities'));
 			
-			for (var i = 0; i < toRemove.length; i++) {
-				toRemove[i].remove();
-			}			
-
+			// Add 'br' elements by selector
 			var breaks = document.querySelectorAll('.pg-content br');
 			for (var i = 0; i < breaks.length; i++) {
-				breaks[i].remove();
+				toRemove.push(breaks[i]);
 			}
+			
+			// Remove all
+			for (var i = 0; i < toRemove.length; i++) {
+				toRemove[i].parentNode.removeChild(toRemove[i]);
+			}			
+	
 		}
 		
 		this.saveAllData = function() 

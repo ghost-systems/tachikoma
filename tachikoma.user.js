@@ -6,7 +6,7 @@
 // @include     *
 // @grant		none
 // @require		http://code.jquery.com/jquery-latest.js
-// @version     7.0.3
+// @version     7.0.16
 // ==/UserScript==
 
 window.gQuery = $.noConflict(true);
@@ -14,7 +14,7 @@ window.gQuery = $.noConflict(true);
 		
 	console.log('Tachikoma v7 running on : ' + $().jquery);
 	
-	Utils = new function() 
+	Utils = new function() // Plain JS
 	{
 		var self = this;
 		
@@ -58,22 +58,59 @@ window.gQuery = $.noConflict(true);
 			}
 		}
 		
-		function addMenuStyles() 
+		function addMenuStyles() // Plain JS
 		{
-			$('head').append('<link rel="stylesheet" href="https://lab.ghost.systems/tachikoma/resources/css/styles.css">');
-			//var elem = document.getElementsByTagName('head'); 
-			//elem.append('<link rel="stylesheet" href="https://lab.ghost.systems/tachikoma/resources/css/styles.css">');
+			// Create stylesheet link element.
+			var styleSheet = document.createElement('link');
+			styleSheet.rel = 'stylesheet';
+			styleSheet.href = 'https://lab.ghost.systems/tachikoma/resources/css/styles.css';
+			
+			// Add to head element.
+			document.getElementsByTagName('head')[0].appendChild(styleSheet);
 		}
 	
-		function addMenuHtml(menuType)
+		function addMenuHtml(menuType) // Plain JS
 		{
+			// Create fragment parts.
+			var fragment = document.createDocumentFragment(),
+				toggle = document.createElement('div'),
+				switchBox = document.createElement('div'),
+				count = 4,
+				menu = document.createElement('div'),
+				overlay = document.createElement('div'),
+				progress = document.createElement('div'),
+				text  = document.createElement('div');
+
+			// Set Id's and classes
+			toggle.id = 'gs-switch';
+			switchBox.className = 'gs-switchBox';
+			menu.id = 'gs-menu';
+			overlay.id = 'gs-overlay';
+			progress.id = 'percentbar';
+			text.id = 'txt';
+				
+			// Toggle's alternate display (3 Bars).
 			if (menuType === 'bars') {
-				// Three Bars
-				$('body').append('<div id="gs-switch"><div class="gs-switchBoxAlt"></div><div class="gs-switchBoxAlt"></div><div class="gs-switchBoxAlt"></div></div><div id="gs-menu"></div><div id="gs-overlay"><div id="percentbar"></div><div id="txt"></div></div>');
-			} else {
-				// Four Boxes
-				$('body').append('<div id="gs-switch"><div class="gs-switchBox"></div><div class="gs-switchBox"></div><div class="gs-switchBox"></div><div class="gs-switchBox"></div></div><div id="gs-menu"></div><div id="gs-overlay"><div id="percentbar"></div><div id="txt"></div></div>');
+				switchBox.className = 'gs-switchBoxAlt';
+				count = 3;
 			}
+			
+			// Collate toggle elements.
+			for (var i = 0; i < count; i++) {
+				toggle.appendChild(switchBox.cloneNode());
+			}
+			
+			// Collate overlay elements
+			overlay.appendChild(progress);
+			overlay.appendChild(text);
+			
+			// Collate fragment elements
+			fragment.appendChild(toggle);
+			fragment.appendChild(menu);
+			fragment.appendChild(overlay);
+
+			// Add fragment to page.
+			document.getElementsByTagName('body')[0].appendChild(fragment);
 		}
 	
 		function addMenuAnimations()
