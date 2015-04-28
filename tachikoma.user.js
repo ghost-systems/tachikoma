@@ -6,7 +6,7 @@
 // @include     *
 // @grant		none
 // @require		http://code.jquery.com/jquery-latest.js
-// @version     7.0.0
+// @version     7.0.3
 // ==/UserScript==
 
 window.gQuery = $.noConflict(true);
@@ -18,12 +18,12 @@ window.gQuery = $.noConflict(true);
 	{
 		var self = this;
 		
-		this.atTopLevel = function()
+		this.atTopLevel = function() // Plain JS
 		{
 			return (window.top == window.self);
 		}
 		
-		this.toCamelCase = function(inputString)
+		this.toCamelCase = function(inputString) // Plain JS
 		{
 			return inputString
 				.toLowerCase()
@@ -32,7 +32,7 @@ window.gQuery = $.noConflict(true);
 				});
 		}
 		
-		this.size = function(obj) 
+		this.size = function(obj) // Plain JS
 		{
 			var size = 0, key;
 			for (key in obj) 
@@ -61,6 +61,8 @@ window.gQuery = $.noConflict(true);
 		function addMenuStyles() 
 		{
 			$('head').append('<link rel="stylesheet" href="https://lab.ghost.systems/tachikoma/resources/css/styles.css">');
+			//var elem = document.getElementsByTagName('head'); 
+			//elem.append('<link rel="stylesheet" href="https://lab.ghost.systems/tachikoma/resources/css/styles.css">');
 		}
 	
 		function addMenuHtml(menuType)
